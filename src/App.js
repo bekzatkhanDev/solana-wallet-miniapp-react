@@ -16,7 +16,7 @@ function App() {
 
   const handleCreate = async () => {
     const keypair = Keypair.generate();
-    setWallet([kkeypair.publicKey, keypair.secretKey ])
+    setWallet([keypair.publicKey, keypair.secretKey ])
   }
   return (
     <div className="App">
