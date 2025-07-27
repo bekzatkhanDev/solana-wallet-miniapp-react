@@ -1,7 +1,6 @@
 import './App.css';
 import { useEffect, useState } from 'react';
-import * as solanaWeb3 from "@solana/web3.js";
-import { generateKeyPairSigner } from "@solana/kit";
+import { Keypair } from "@solana/web3.js";
 const tg = window.Telegram.WebApp;
 
 function App() {
@@ -16,8 +15,8 @@ function App() {
   }
 
   const handleCreate = async () => {
-    const keypairSigner = await generateKeyPairSigner();
-    setWallet([keypairSigner.address,keypairSigner.keyPair.privateKey ])
+    const keypair = Keypair.generate();
+    setWallet([kkeypair.publicKey, keypair.secretKey ])
   }
   return (
     <div className="App">
