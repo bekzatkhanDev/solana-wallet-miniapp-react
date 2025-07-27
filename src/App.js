@@ -17,10 +17,7 @@ function App() {
 
   const handleCreate = () => {
     const keypair = Keypair.generate();
-    setWallet([
-      keypair.publicKey,
-      keypair.secretKey
-    ]);
+    setWallet([keypair]);
   };
 
   return (
