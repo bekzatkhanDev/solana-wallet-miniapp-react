@@ -19,7 +19,7 @@ function App() {
     const keypair = Keypair.generate();
     setWallet([
       keypair.publicKey.toBase58(),
-      Buffer.from(keypair.secretKey).toString('base64'),
+      keypair.secretKey.toBase58()
     ]);
   };
 
