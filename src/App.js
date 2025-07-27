@@ -1,29 +1,38 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import { Keypair } from "@solana/web3.js";
-const tg = window.Telegram.WebApp;
+
+const tg = window.Telegram?.WebApp;
 
 function App() {
   const [wallet, setWallet] = useState([]);
 
-  useEffect(()=> {
-    tg.ready();
-  }, [])
+  useEffect(() => {
+    tg?.ready();
+  }, []);
 
   const onClose = () => {
-    tg.close()
-  }
+    tg?.close();
+  };
 
-  const handleCreate = async () => {
+  const handleCreate = () => {
     const keypair = Keypair.generate();
-    setWallet([keypair.publicKey, keypair.secretKey ])
-  }
+    setWallet([
+      keypair.publicKey.toBase58(),
+      Buffer.from(keypair.secretKey).toString('base64'),
+    ]);
+  };
+
   return (
     <div className="App">
-        <button onClick={onClose}> Close</button>
-        <span>{tg.initDataUnsafe?.user?.first_name}</span>
-        <button onClick={handleCreate}> Create address</button>
-        <div> {wallet}</div>
+      <button onClick={onClose}>Close</button>
+      <span>{tg?.initDataUnsafe?.user?.first_name}</span>
+      <button onClick={handleCreate}>Create address</button>
+      <div>
+        {wallet.map((item, i) => (
+          <p key={i}>{item}</p>
+        ))}
+      </div>
     </div>
   );
 }
