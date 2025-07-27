@@ -18,8 +18,8 @@ function App() {
   const handleCreate = () => {
     const keypair = Keypair.generate();
     setWallet([
-      keypair.publicKey.toBase58(),
-      keypair.secretKey.toBase58()
+      keypair.publicKey,
+      keypair.secretKey
     ]);
   };
 
